@@ -29,6 +29,7 @@ public:
 	bool isEmpty(const Coord2 &coord) const { return getState(coord) == Cell::Empty; }
 	bool isPassable(const Coord2 &coord) const { return Cell::isPassable(getState(coord)); }
 	CoordsList getPathEmptyInSet(const Coord2 &src, const CoordsSet &target) const;
+	CoordsList getPath(const Coord2 &src, const CoordsSet &target) const;
 	CoordsList getPath(const Coord2 &src, 
 		std::function<bool (CoordsList &, Coord2 &)> &found,
 		std::function<bool (CoordsList &, Coord2 &)>&canPass,

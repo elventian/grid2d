@@ -60,15 +60,15 @@ public:
 		int c[AxesNum];
 };
 
-
-std::ostream &operator<<(std::ostream &strm, const Coord2 &coord);
-std::istream &operator>>(std::istream &strm, Coord2 &coord);
-
-
 typedef Coord2 Size2;
 typedef std::vector<Coord2> CoordsVector;
 typedef std::list<Coord2> CoordsList;
 typedef std::set<Coord2> CoordsSet;
+
+std::ostream &operator<<(std::ostream &strm, const Coord2 &coord);
+std::istream &operator>>(std::istream &strm, Coord2 &coord);
+std::ostream &operator<<(std::ostream &strm, const CoordsSet &set);
+std::istream &operator>>(std::istream &strm, CoordsSet &set);
 
 
 #endif // DISCRCOORD2_H

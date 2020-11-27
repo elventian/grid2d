@@ -8,11 +8,16 @@ const char Rotation::chars[Rotation::RotsNum] = { 'E', 'Q' };
 
 Coord2 Direction::offset() const
 {
+	return offset(dir);
+}
+
+Coord2 Direction::offset(Direction::Dir dir)
+{
 	switch (dir) {
 		case Right: return Coord2(1, 0);
 		case Left:  return Coord2(-1, 0);
-		case Up:    return Coord2(0, 1);
-		case Down:  return Coord2(0, -1);
+		case Up:    return Coord2(0, -1);
+		case Down:  return Coord2(0, 1);
 		default: {}
 	}
 	return Coord2();
@@ -99,8 +104,8 @@ Direction::Direction(const Coord2 &from, const Coord2 &to)
 	if (diff.x() != 0 && diff.y() != 0) { dir = DirsNum; return; }
 	if      (diff.x() > 0) { dir = Right; return; }
 	else if (diff.x() < 0) { dir = Left; return; }
-	else if (diff.y() > 0) { dir = Up; return; }
-	else if (diff.y() < 0) { dir = Down; return; }
+	else if (diff.y() > 0) { dir = Down; return; }
+	else if (diff.y() < 0) { dir = Up; return; }
 	dir = NoDir;
 }
 

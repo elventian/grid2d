@@ -52,7 +52,29 @@ CoordsList Map::getPathEmptyInSet(const Coord2 &src, const CoordsSet &target) co
 		[this] (CoordsList &path, Coord2 &coord) {
 			(void) path;
 			Cell::State cell = getState(coord);
-			return cell != Cell::Wall;
+			return cell == Cell::Empty;
+		};
+	
+	std::function<std::vector<Coord2> (CoordsList &)> getAdjacent =
+		[] (CoordsList &path) {
+		return path.back().getAdjacent();
+	};
+	
+	return getPath(src, found, canPass, getAdjacent);
+}
+
+CoordsList Map::getPath(const Coord2 &src, const CoordsSet &target) const
+{
+	std::function<bool (CoordsList &, Coord2 &)> found = 
+		[&target, this] (CoordsList &, Coord2 &coord) {
+			return target.count(coord);
+		};
+	
+	std::function<bool (CoordsList &, Coord2 &)> canPass = 
+		[this] (CoordsList &path, Coord2 &coord) {
+			(void) path;
+			Cell::State cell = getState(coord);
+			return cell == Cell::Empty;
 		};
 	
 	std::function<std::vector<Coord2> (CoordsList &)> getAdjacent =

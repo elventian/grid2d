@@ -33,6 +33,7 @@ public:
 	bool isNowhere() const { return dir == NoDir; }
 	char getChar() const { return chars[dir]; }
 	Coord2 offset() const;
+	static Coord2 offset(Dir dir);
 	int rotationsTo(Direction other, Rotation *rot);
 	Direction rotatedOnce(Rotation rot) const;
 	Coord2 rightCoordRotated(const Coord2 &rightCoord) const;

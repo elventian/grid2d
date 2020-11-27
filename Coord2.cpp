@@ -59,3 +59,24 @@ std::istream &operator>>(std::istream &strm, Coord2 &coord) {
 	strm >> (int &)coord.x() >> (int &)coord.y();
 	return strm;
 }
+
+std::ostream &operator<<(std::ostream &strm, const CoordsSet &set)
+{
+	strm << set.size();
+	for (const Coord2 &c: set) {
+		strm << " " << c.x() << " " << c.y();
+	}
+	return strm;
+}
+
+std::istream &operator>>(std::istream &strm, CoordsSet &set)
+{
+	int size;
+	strm >> size;
+	for (int i = 0; i < size; i++) {
+		int x, y;
+		strm >> x >> y;
+		set.insert(Coord2(x, y));
+	}
+	return strm;
+}
