@@ -40,6 +40,7 @@ public:
 	Coord2 operator/(int divisor) const { return Coord2(x()/divisor, y()/divisor); }
 	int manhDist(const Coord2 &other) const;
 	int squaredDist(const Coord2 &other) const;
+	int square() const { return squaredDist(Coord2()); }
 	int dist(const Coord2 &other) const;
 	int chebyshevDist(const Coord2 &other) const;
 	Coord2 toGrid(int gridStep) const;
