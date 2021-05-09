@@ -35,6 +35,9 @@ public:
 	HexList neighbours(Dir dir, int dist) const;
 	HexList neighbours(int dist) const;
 	Dir dirToNeighbour(const Hex &other) const;
+	Hex mirror() const { 
+		return Hex(-c[Q], -c[R]);
+	}
 	
 	static Dir oppositeDir(Dir dir) { return (Dir)((dir + DirsNum/2) % DirsNum); }
 	static Dir nextDir(Dir dir, int stepNum = 1) { return (Dir)((dir + stepNum) % DirsNum); }
